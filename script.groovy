@@ -21,7 +21,7 @@ def dockerPush(String project, String ImageTag, String hubUser){
     // }
     withCredentials([usernamePassword(
         credentialsId: 'dockerhub_cred',
-         asswordVariable: 'pass', 
+        passwordVariable: 'pass', 
         usernameVariable: 'user')]) {
         sh " docker login  -u '$user' -p '$pass' "
     // some block
