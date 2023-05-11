@@ -137,24 +137,24 @@ pipeline{
                 }
             }
         }
-        stage("push to EC2 server"){
-            when{expression { params.action == 'create'} }
-            steps{
-                echo "====++++executing push to EC2 server++++===="
-            }
-            post{
-                always{
-                    echo "====++++always++++===="
-                }
-                success{
-                    echo "====++++push to EC2 server executed successfully++++===="
-                }
-                failure{
-                    echo "====++++push to EC2 server execution failed++++===="
-                }
+        // stage("push to EC2 server"){
+        //     when{expression { params.action == 'create'} }
+        //     steps{
+        //         echo "====++++executing push to EC2 server++++===="
+        //     }
+        //     post{
+        //         always{
+        //             echo "====++++always++++===="
+        //         }
+        //         success{
+        //             echo "====++++push to EC2 server executed successfully++++===="
+        //         }
+        //         failure{
+        //             echo "====++++push to EC2 server execution failed++++===="
+        //         }
         
-            }
-        }
+        //     }
+        // }
         stage("docker image removal"){
             when{expression { params.action == 'create'} }
             steps{
