@@ -8,6 +8,10 @@ pipeline{
         string(name: 'ImageTag', description: 'tag of the docker build', defaultValue: "v1")
         string(name: "DockerHubUser", description: "name of the Application", defaultValue: "bopgeek")
     }
+    environment{
+        REMOTE_SERVER = '13.246.8.162'
+        REMOTE_USER = 'ubuntu'
+    }
 
     stages{
         stage("init"){
@@ -137,24 +141,31 @@ pipeline{
                 }
             }
         }
-        // stage("push to EC2 server"){
-        //     when{expression { params.action == 'create'} }
-        //     steps{
-        //         echo "====++++executing push to EC2 server++++===="
-        //     }
-        //     post{
-        //         always{
-        //             echo "====++++always++++===="
-        //         }
-        //         success{
-        //             echo "====++++push to EC2 server executed successfully++++===="
-        //         }
-        //         failure{
-        //             echo "====++++push to EC2 server execution failed++++===="
-        //         }
+        stage("push to EC2 server"){
+            when{expression { params.action == 'create'} }
+            steps{
+                echo "====++++executing push to EC2 server++++===="
+                script {
+                    sshagent(credentials: ['ec2-cred']) {
+                        sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker stop DeployedjavaApp || true && docker rm DeployedjavaApp || true'"
+                        sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker pull bopgeek/javaec2deploy"
+                        sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker run --name DeployedjavaApp -d -p 8080:8080 bopgeek/javaec2deploy'"
+                    }
+                }
+            }
+            post{
+                always{
+                    echo "====++++always++++===="
+                }
+                success{
+                    echo "====++++push to EC2 server executed successfully++++===="
+                }
+                failure{
+                    echo "====++++push to EC2 server execution failed++++===="
+                }
         
-        //     }
-        // }
+            }
+        }
         stage("docker image removal"){
             when{expression { params.action == 'create'} }
             steps{
