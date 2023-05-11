@@ -9,7 +9,8 @@ pipeline{
         string(name: "DockerHubUser", description: "name of the Application", defaultValue: "bopgeek")
     }
     environment{
-        REMOTE_SERVER = '13.246.8.162'
+        // REMOTE_SERVER = '13.246.8.162' 
+        REMOTE_SERVER = 'ubuntu@ec2-13-246-8-162.af-south-1.compute.amazonaws.com'
         REMOTE_USER = 'ubuntu'
     }
 
