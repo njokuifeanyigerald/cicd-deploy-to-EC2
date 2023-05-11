@@ -22,7 +22,7 @@ pipeline{
             when{expression { params.action == 'create'} }
             steps{
                 echo "========executing Git checkout========"
-                // git 'https://github.com/njokuifeanyigerald/EKSTerraformJenkinsCI-CD.git'
+                git 'https://github.com/njokuifeanyigerald/cicd-deploy-to-EC2.git'
             }
             post{
                 success{
