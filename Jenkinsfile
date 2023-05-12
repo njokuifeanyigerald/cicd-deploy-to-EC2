@@ -150,7 +150,7 @@ pipeline{
                     sshagent(credentials: ['ec2-cred']) {
                         docker pull bopgeek/javaec2deploy:latest
                         // sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker stop DeployedjavaApp || true && docker rm DeployedjavaApp || true'"
-                        sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker pull bopgeek/javaec2deploy:latest"
+                        sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker pull bopgeek/javaec2deploy:latest'"
                         sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker run --name DeployedjavaApp -d -p 8081:8081 bopgeek/javaec2deploy:latest'"
                     }
                 }
