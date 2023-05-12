@@ -10,7 +10,7 @@ pipeline{
     }
     environment{
         // REMOTE_SERVER = '13.246.8.162' 
-        REMOTE_SERVER =  '13.246.47.222'
+        REMOTE_SERVER =  '13.244.111.35'
         REMOTE_USER = 'ubuntu'
     }
 
@@ -150,7 +150,7 @@ pipeline{
                     sshagent(credentials: ['ec2-cred']) {
                         sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker stop DeployedjavaApp || true && docker rm DeployedjavaApp || true'"
                         sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker pull bopgeek/javaec2deploy'"
-                        sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker run --name DeployedjavaApp -d -p 8081:8081 bopgeek/javaec2deploy'"
+                        sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker run --name DeployedjavaApp -d -p 8080:8080 bopgeek/javaec2deploy'"
                     }
                 }
             }
