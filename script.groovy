@@ -34,8 +34,8 @@ def dockerPush(String project, String ImageTag, String hubUser){
 }
 def dockerImageRemove(String project, String ImageTag, String hubUser){
     sh """
-        docker rmi ${hubUser}/${project}:latest 
-        docker rmi ${hubUser}/${project}:${ImageTag}
+        docker rmi ${hubUser}/${project}:latest -f
+        docker rmi ${hubUser}/${project}:${ImageTag} -f
        """
 }
 

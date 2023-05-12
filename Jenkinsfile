@@ -170,7 +170,7 @@ pipeline{
         stage("docker image removal"){
             when{expression { params.action == 'create'} }
             steps{
-                echo "====++++executing docke image scan++++===="
+                echo "====++++executing docker image scan++++===="
                 script{
                     gv.dockerImageRemove("${params.ImageName}", "${params.ImageTag}", "${params.DockerHubUser}")
                 }
