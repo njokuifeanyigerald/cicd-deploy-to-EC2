@@ -10,7 +10,7 @@ pipeline{
     }
     environment{
         // REMOTE_SERVER = '13.246.8.162' 
-        REMOTE_SERVER = 'ubuntu@ec2-13-246-8-162.af-south-1.compute.amazonaws.com'
+        REMOTE_SERVER =  '13.246.47.222'
         REMOTE_USER = 'ubuntu'
     }
 
