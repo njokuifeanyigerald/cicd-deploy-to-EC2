@@ -36,6 +36,7 @@ def dockerImageRemove(String project, String ImageTag, String hubUser){
     sh """
         docker rmi ${hubUser}/${project}:latest -f
         docker rmi ${hubUser}/${project}:${ImageTag} -f
+        docker image prune --force
        """
 }
 
