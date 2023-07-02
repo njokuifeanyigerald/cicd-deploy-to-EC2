@@ -24,7 +24,11 @@ Push docker image to dockerhub
 -----------
     docker push bopgeek/kubernetes-configmap-reload
     
-Deploy Spring Application:
---------
-    to EC2
-    
+
+----------------------
+SSH-AGENT
+
+
+- Download a plugin called ssh-agent
+- go to credentials in your jenkins, in the credential typee - choose ssh-key, paste the <>.pem key in it, choose a username 
+
