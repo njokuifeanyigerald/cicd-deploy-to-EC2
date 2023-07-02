@@ -30,5 +30,10 @@ SSH-AGENT
 
 
 - Download a plugin called ssh-agent
-- go to credentials in your jenkins, in the credential typee - choose ssh-key, paste the <>.pem key in it, choose a username 
+- go to credentials in your jenkins, in the credential typee - choose ssh-key, paste the <>.pem key in it, choose a username(example if you re using an ubuntu image, write ubuntu as the username)
+  ![image](https://github.com/njokuifeanyigerald/cicd-deploy-to-EC2/assets/46121207/129438dd-32df-4bfb-a667-84bded19d131)
+- click `Enter directly` then paste your <>.pem file used for ssh in the specific server
+  ![image](https://github.com/njokuifeanyigerald/cicd-deploy-to-EC2/assets/46121207/b5536ea3-aa46-4ab8-a3a8-23ae2d0e0f87)
+
+
 
