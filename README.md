@@ -27,7 +27,8 @@ Push docker image to dockerhub
 
 ----------------------
 SSH-AGENT
-
+- first of all, ssh into your aws terminal, then vi <securtity_key>.pem and paste the contents of the .pem file you used for the ssh into the webserver
+- chmod 400 <security_key>.pem
 
 - Download a plugin called ssh-agent
 - go to credentials in your jenkins, in the credential typee - choose ssh-key, paste the <>.pem key in it, choose a username(example if you re using an ubuntu image, write ubuntu as the username)
